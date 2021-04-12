@@ -40,6 +40,7 @@ module.exports = (opts = {}) => {
     buildUrl = defaultUrlBuilder,
     selectors: customSelectors = [],
     transformAsset,
+    cwdPath,
   } = opts;
 
   return async (tree, { cwd, path }) => {
@@ -57,7 +58,7 @@ module.exports = (opts = {}) => {
       }
 
       const fullpath = resolve(
-        cwd,
+        cwdPath || cwd,
         path ? dirname(path) : '',
         platformNormalizedUrl,
       );
