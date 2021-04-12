@@ -43,7 +43,7 @@ module.exports = (opts = {}) => {
     cwdPath,
   } = opts;
 
-  return async (tree, { cwd, path }) => {
+  return async (tree) => {
     const assets = [];
 
     const handleUrl = async (url) => {
@@ -57,11 +57,7 @@ module.exports = (opts = {}) => {
         return;
       }
 
-      const fullpath = resolve(
-        cwdPath || cwd,
-        path ? dirname(path) : '',
-        platformNormalizedUrl,
-      );
+      const fullpath = resolve(cwdPath, platformNormalizedUrl);
 
       if (!(await exists(fullpath))) {
         return;
