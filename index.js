@@ -41,6 +41,7 @@ module.exports = (opts = {}) => {
     selectors: customSelectors = [],
     transformAsset,
     cwdPath,
+    dryRun = false,
   } = opts;
 
   return async (tree) => {
@@ -148,12 +149,14 @@ module.exports = (opts = {}) => {
       }
     });
 
-    await ForEach(
-      UniqBy(assets.filter(Boolean), 'filename'),
-      async ({ fullpath, filename }) => {
-        await Cp(fullpath, join(destinationDir, filename));
-      },
-    );
+    if (!dryRun) {
+      await ForEach(
+        UniqBy(assets.filter(Boolean), 'filename'),
+        async ({ fullpath, filename }) => {
+          await Cp(fullpath, join(destinationDir, filename));
+        },
+      );
+    }
 
     return newTree;
   };
