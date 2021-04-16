@@ -1,8 +1,7 @@
 {
-  "name": "remark-copy-linked-files",
+  "name": "remark-copy-reference-files",
   "description": "Find files which are linked to from markdown and copy them to the public directory",
-  "version": "1.2.0",
-  "repository": "sergioramos/remark-copy-linked-files",
+  "version": "1.0.0",
   "main": "index.js",
   "keywords": [
     "markdown",
@@ -10,10 +9,6 @@
     "remarkjs",
     "remark-plugin"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.com",
-    "access": "public"
-  },
   "scripts": {
     "eslint": "eslint . --ext .js",
     "fmt": "prettier --config package.json --write '**/*'",
@@ -60,17 +55,6 @@
     "unified": "^9.2.0",
     "vfile": "^4.2.0"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "prettier --config package.json --write",
-      "git add"
-    ],
-    "*.*": [
-      "prettier --config package.json --write",
-      "git add"
-    ]
-  },
   "prettier": {
     "bracketSpacing": true,
     "jsxBracketSameLine": false,
@@ -80,27 +64,5 @@
     "tabWidth": 2,
     "trailingComma": "all",
     "useTabs": false
-  },
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended",
-      "xo-space/esnext",
-      "prettier"
-    ],
-    "rules": {
-      "new-cap": 0,
-      "camelcase": 0,
-      "capitalized-comments": 0
-    }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ],
-    "rules": {
-      "body-max-line-length": [
-        0
-      ]
-    }
   }
 }
